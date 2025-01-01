@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My love🥰🫂</title> 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* Header Section */
+    header {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+    }
+    /* Image Slider */
+    .slider {
+      display: flex;
+      animation: slide 8s infinite;
+    }
+    .slider img {
+      width: 100vw;
+      height: 50vh;
+      object-fit: cover;
+    }
+    /* Slide Animation */
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100vw); }
+      66% { transform: translateX(-200vw); }
+      100% { transform: translateX(0); }
+    }
+    /* Overlay Content */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+    }
+    .overlay h1 {
+    font-size: 4rem;  
+    font-weight: bold; 
+    color: #c10101;   
+    font-family: 'Cooper Jackson.ttf';  
+    text-align: center;
+    margin-bottom: 20px; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    animation: fadeIn 2s ease-in-out;
+  }
+  /* Optional fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+      
+    /* Play/Pause Button */
+    .play-button {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family:CustomFont;
+      background-color: #f40752;
+      color: rgb(243, 243, 243);
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .play-button:hover {
+      background-color: #40eb902a;
+    }
+    /* Message Card */
+    .message-card {
+      background-color: #f02ea968;
+      color: rgb(254, 254, 254);
+      font-family: CustomFont;
+      font-weight: bold;
+      font-size: x-large;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(245, 5, 5, 0.219);
+      margin-bottom: 20px; /* Added space below the message card */
+      position: relative;
+      z-index: 1; /* Ensure it is above the other cards and slide over the background image */
+      transition: transform 0.3s;
+      cursor: pointer; /* To resemble a button */
+    }
+    .message-card:hover {
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+    /* Square Frame for Birthday Wish */
+    .square-frame {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background-color: rgb(201, 31, 59);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    /* Inner Image */
+    .square-frame img {
+      width: 90%;
+      height: 90%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    /* Show Square Frame */
+    .square-frame.show {
+      opacity: 1;
+    }
+    /* Main Content Section */
+    main {
+      flex: 1;
+      padding: 20px;
+      /* background-color: #b11313; */
+      background: url('img/imgW.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column; /* Keeps message card above */
+      align-items: center;
+    }
+    /* Card Section */
+    .card-container {
+      display: flex; /* Align cards in a row */
+      justify-content: center; /* Center cards */
+      flex-wrap: wrap; /* Wrap if necessary */
+    }
+    .card {
+      position: relative;
+      width: 200px; /* Increased width */
+      height: 250px; /* Increased height */
+      margin: 10px;
+      perspective: 1000px;
+      transition: transform 0.6s;
+    }
+    .card-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-family: 'cooper' , sans-serif;
+      color: rgb(245, 245, 246);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      background-color: #f31d937d;
+    }
+    .card-back {
+      background-color: #fe1174dc;
+      transform: rotateY(180deg);
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    /* Footer Section */
+    footer {
+      background-color: #f40000c9;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: 'Cooper', sans-serif;
+      font-weight: bold;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header, main, footer {
+        padding: 15px;
+        text-align: center;
+      }
+      .overlay h1 {
+        font-size: 1.5rem;
+      }
+      .message-card {
+        width: 90%;
+      }
+      .card {
+        width: 150px; /* Adjusted for smaller screens */
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section with Image Slider -->
+  <header>
+    <div class="slider">
+      <img src="img/Imga.jpg" alt="Slide 1">
+      <img src="img/imgO.jpg" alt="Slide 2">
+      <img src="img/imgD.jpg" alt="Slide 4">
+      <img src="img/imgH.jpg" alt="Slide 5">
+      <img src="img/imgP.jpg" alt="Slide 6">
+      <img src="img/imgG.jpg" alt="slide 7">
+      <img src="img/imgH.jpg" alt="slide 8">
+      <img src="img/imgI.jpg" alt="slide 9">
+      <img src="img/imgJ.jpg" alt="slide 10">
+      <img src="img/imgL.jpg" alt="slide 11">
+      <img src="img/imgM.jpg" alt="slide 12">
+      <img src="img/imgZ.jpg" alt="slide 13">
+      <img src="img/imgF.jpg" alt="slide 13">
+      <img src="img/imgBb.jpg" alt="slide 14">
+      <img src="img/imgY.jpg" alt="slide 16">
+      <img src="img/imgR.jpg" alt="slide 17">
+      <img src="img/imgT.jpg" alt="slide 18">
+      <img src="img/imgAa.jpg" alt="slide 19">
+      <img src="img/imgE.jpg" alt="slide 20">
+      <img src="img/imgW.jpg" alt="slide 21">
+      <img src="img/imgCc.jpg" alt="slide 22">
+      <img src="img/imgDd.jpg" alt="slide 23">
+      <img src="img/imgN.jpg" alt="slide 24">
+      <img src="img/imgb.jpg" alt="slide 25">
+    </div>
+    <div class="overlay">
+      <h1>Happy Birthday Hubby😘❤️🥳🥰</h1>
+      <button class="play-button" onclick="togglePlayPause()">I LOVE YOU LADOO💗🫂💏😘</button>
+    </div>
+  </header>
+  <!-- Main Content Section -->
+  <main>
+    <!-- Message Card Styled Like a Button -->
+    <div class="message-card">
+      A SPECIAL MESSAGE FOR YOU HUBBY😘❤️🫂✨ FROM YOUR WIFEY🥰✨
+    <br>Happy Birthday to the Love of my life❤️😘🥳🥳
+    <br>First of all, I want to say that, I Love You and I'll always Love You Ladoo❤️🫂
+    <br>Happy Birthday my PRINCE CHARMING🤴💕
+    <br>Happy Birthday to the man who stole my heart❤️ and never get it back😘🤞🥰
+    <br>Happy Birthday to the man who teach me what actually Love is..🤗❤️
+    <br>Happy Birthday mera chhota sa Pyara sa Baccha 😚😚🧑🏻‍❤️‍🧑🏽❤️
+    <br>Happy Birthday mere Jigar ke tukde,mere aankho ke taare,mera laal,mera hara,mera peela,mera neela,mera sb kuchh..🤗❤️🥰😘
+    <br> Thank-you Ladoo meri life me aane ke liye or hmesa mujhse jyda mera khyal rkhne ke liye🥺🥰 
+    <br> Mujhe pyaar sikhane ke liye, Mujhe Sushant ki Sadhna bnane ke liye💏❤️🙈😘✨
+    <br>Aapke bina ek pal bhi rhna mushkil hai mere liye,toh Please🥺 kbhi mujhe chhorne ka sochna bhi mt🥺🥺🤞
+    <br>Aapko duniya jahaan ki hr khusiyaan dena chahti hu mai hmesaaaaa,itni mohabbat hai Sadhna ko Sushant se or hmesa rhegi🤞🥰😘❤️🧿
+    <br>I will always Loveeeee Youuu Hubby... 🥺❤️😘😘 
+    <br> I loveeee youuuu the mostttt and you know that 🫂😘😘❤️
+      <br>I loveeee youuuu mela chhotu sa pyara sa cutuuu sa baccha 😘💏💞 
+      <br>Thankyou bhagwan jii for giving me such a handsome,varing and loving Life Partner 🤞🏻❤️ And one thanks to my Sasu Maa also🥰😘..
+      <br>Happy Birthday to the one who makes me smile and who makes my heart skip a beat💗💓
+      <br>You bring so much love❤️, warmth🫂 and happiness🥰 into my life🤗.. May your Birthday be as incredible as you are😘🤞.
+      <br>For me you're the most handsome man in this world🌍😍😘. 
+      <br>I have loved you for now and will love you till eternity♾️❤️. 
+      <br>Even when the light of God would fade, my love for you won't ever❤️
+      <br>Mujhe aapke har ehsaas se pyaar hai,aapki aankhe,aapki muskaan🥰se pyaar hai🥰❤️,Or ye pyaar hmesaaa rhega..🤗💓
+
+      <br>You're the most precious gift, to me your presence holds🫂 something special beside me.
+      <br> When I'm with you I can be who I'm, I can be my true self,I can be in the naughtiest and cutest version of myself😉😘
+      <br> I don't have to makeup that I make so much mistakes🥺,and I hurt you most of the time But you still love me the same🥺🫂❤️
+      <br>Meri gltiyo ke baad bhi Aapka mere saath khra rhna, mujhe support krna, or ussi trh pyaar krna, iss sbne mujhe meri gltiyo ka ehsaas kraya,🥺🥺🤞 
+      <br>Maine khud ko ek behtr insaan bnaya, mai ye nhi khungi mujhse ab kbhi koi glti nhi hogi.., Pr koi aisi glti nhi hogi jisse aapka dil dukhe ye promise krti hu🤞💫
+      <br>Mai aapko khona afford nhi kr skti Baccha ab, Kyuki maine apni puri duniya aap tk bnna li hai bss ye baat dhyan rkhna hmesaa❤️🫂
+      <br> No distance can ever dull the love I have for you❤️🥰...
+      <br> Every moment in life you choose to stand by me, I'm in love with that🤞❤️🥹
+      <br> Every time you exactly get to know I ain't feeling good, I'm in love with that love🥰🫂...<br>I am in Love with you My Love🤞❤️🥹😚
+      <br>I just want you to be with me holding my hands in every good or bad situation,❤️🫂✨
+       <br> From dealing with any situation, the one thing I need is your support🫂🤗.For me it was always you❤️🤞<br>I won't ask for anyone if you're there😘
+       <br>Ye jo hmare Ishq hai, ye na hmne kiya hai na ye apne aap hua hai,Ye hme diya gya hai kyuki ye hmare naseeb me tha🤞✨
+       <br>Woh ishq jisme na hme millne ki fikr hai or na judai ka drr kuch hai toh woh ek dusre ke liye bepanaah mohabbat🤗🫂 Or ye hmesaa rhegi..🫂
+       <br>LADOO💗😘 hmare beech kitni bhi milo ki durri aajae pr hum dono ek dusre ke dil se kbhi durr nhi hoskte hai or yhi hmari Taqdeer hai🤞😘😘🥰
+      <br>I Loveeee Youuuuu the mosttttt Baccha 🥹💓😘🫂   
+      <br>I hope you know that, how much I adore you❤️🤗😘😘
+      <br>Happy Birthday Pati Parmeshwar jii 🥰😘🙈🥳
+      <br>Aap kehte ho na mujhse ki mai glow krti hu, Pr sch toh ye hai ki ye glow bhi aapke hone se hi rhti hai,🥺 Dhyaan rkhna ye baat🙄 mera glow na chura lena kbhi🥺
+      <br>Your Birthday is a reminder of how blessed I Feel to have you in my life as my Lover and my Better-half🤞❤️🥹😚        
+      <br> ~ANUSHANT
+      <br>Happy Birthday to the Love of my Life 💞 
+      <br> Ladoo🥺 I know b'day aapka hai lekin ek gift dedo n mujhe🥺🫠😍,
+      <br> Mujhse shaadi karlo Please🥺😍🤞,aur ek waada bhi kro ki kitne hi gile shikwekyu na ho ladd lena mujhse pr chup reh kr jo sajja dete ho bs woh mt dena kbhi jaan nikl jati h meri😭😭.. 
+      <br> Aur bhul kar bhi kabhi durr jaane ki baat naa karoge aur naa hi mujhse kabhi aesa kahoge🥺🥺 promise me🤞❤️🥺 
+      <br> Aur ek choti si khwaish mujhpe gussa nahi karoge pyaar se apni chhoti Sadhna ki tarah smbhal kar rakhoge🥺🥺
+    
+      
+      <br>Thank you for taking care of me like my Dad🤗,For loving me unconditionally like my mumma🥰 and for supporting me always like a good Hubby😘 jo ki aap alredy ho🤞❤️🥰🥺 
+      <br>Halanki It's your duty to take care of your beautiful wifey okay.. Toh shadi ke baad mere nakhre bhi uthane honge or mujhe bhi..🙈🤗🤗😘 Abhi mai aapke nkhre utha lungi😏😘
+      <br>I Love you so much Jaan love🥰🫂 and my feelings are getting stronger day by day🤞🥰
+      <br>Once again Happy Birthday Mera chhota sa pyaara sa baccha❤️🤗🤗😘😘
+      <br>I miss you Hubby 💖🫂 
+      <br>I need you in every moments of my life❤️
+      <br>I'll always Love you 💗 till my last breath,You will always be in my heart always🤞🥺❤️🤗 
+      <br>Thank you so much for being in my life and making me fall in love with myself by choosing me as your Beloved🤞🫠 
+      <br> Once again on your birthday I'm going for this:👉👉
+      <br>WILL YOU PLEASE BE MINE AND STAYS MINE FOR FOREVER AND EVER AND EVER...❤️🥺🥺♾️
+      <br>My Birthday Hope for you is that, You get all the success and happiness in your life✨,May your Birthday filled with everything you desire and more🤗🤞✨❤️ 
+      <br>Hope to celebrate all your next Birthdays together without any grudges and with lots of love only🥰🤞✨😘
+      <br>You are the best thing that happens with me 9 years ago and still we are together after so many fights,grudges and arguments🥺😘🫂
+      <br>which is a great achievment for our relationship🥺😘 , WE DID THIS BABE😘🫂💗♾️..       ~ANUSHANT FOREVER
+      <br>One Line for you Mere Patidev jii...👉🥰 👉🥰 Rab se milla ek ayaan bnn gye❤️, Khwaabo ka mere makaam bnn gye🫂, Aapki tareef me kya kahe😘,Aap hmari JAAN ban gye..🫂😘❤️🤞
+      <br>Let's Pray together that, ANUSHANT❤️ will always stays forever in our hearts❤️ and soul♾️🤞✨
+      <br>Bhutt sari pyaar ki baate krni hai aapse kuch sikaayte bhi krni hai, Kabhi furst se kareeb baith kr sunniyega jrur..🫂🤞
+      <br>Trust me Babe Noone can ever love you the way I do🤗😌,Noone can adore you the way I do and rest you know very well..🙈😉🥰🥰
+      <br>If I have to say one word to describe you as my world, It would be MAJESTIC❤️✨
+      <br>I wish that all your wishes comes true🤞,mujhse peecha chhurane ke alawa🥺😏
+      <br>Jb tk jaan jism se judaa nhi hoti,Sushant Sadhna se or Sadhna Sushant se judaa nhi honge🤞🫂❤️🥰
+      <br>To my dearest Hubby jii, On your special day,I just want you to know that,You are my forever love🥰🫂,my greatest adventure😘😉,and my safest place🤗🫂
+      <br>My dear soulmate and my crush,I want to tell you that loving you is the best thing I have ever done❤️🥰
+      <br>I promise to love you more deeply each passing day❤️😘🫂🤞I Love you more than my word can express🥺❤️
+      <br>Thank you so much Jaan kbhi mujhpe give up nhi krne ke liye🥺🧿 or mujhe hmesaa itna pyaar krne ke liye😘❤️, mujhe pyaar krna seekhane ke liye🥺🥰
+      <br>Please kbhi mujhse durr nhi hona, apna bnna liya hai aapne mujhe ab khud se durr nhi krna, mai rhe nhi paungi🥺🫂
+      <br>I Love You and I will always love you🫂🤗this is the only truth🤞❤️❤️🥺
+      <br>ANUSHANT LOVE FOREVER 💞🫂🤞✨🧿
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Happy Birthday Baccha🤗❤️</div>
+          <div class="card-back">
+            <img src="img/imgP.jpg" alt="Image 1" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio()" alt="clickable image 1">
+        <audio controls id="audio1" src="song/Ve paglaa.mp3"></audio> 
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Happy Birthday Patidev jii🥰🫂😘😘</div>
+          <div class="card-back">
+            <img src="img/imgF.jpg" alt="Image 2" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio()" alt="clickable image 2">
+            <audio controls id="audio2" src="song/Hai Tamanna Humein Tumhe Dulha Banaye.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Happy Birthday to the king of my Heart❤️😘</div>
+          <div class="card-back">
+            <img src="img/imgE.jpg" alt="Image 3" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(3)">
+            <audio controls id="audio3" src="song/Tum Pe Hum Toh Mare Jaa Rahe Hain.mp3"></audio>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">You mean the world to me🌍💓</div>
+          <div class="card-back">
+            <img src="img/imgG.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playSong(4)">
+            <audio controls id="song4" src="song/Aadatein jaise hai tu meri.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Mera sukoon aapki muskaan🥰🤗</div>
+          <div class="card-back">
+            <img src="img/ImgC.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playSong(5)">
+            <audio controls id="song5" src="song/tere bin sanu soniya.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Aaapki aankhe mera aayna🪞❤️💏</div>
+          <div class="card-back">
+            <img src="img/imgV.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playSong(6)">
+            <audio controls id="song6" src="song/Akhiyaan Tadpegi.mp3"></audio>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri saanse aapki mehak🥰❤️</div>
+          <div class="card-back">
+            <img src="img/imgX.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playSong(7)">
+            <audio controls id="song7" src="song/Hai Tu Aadat Ki Tarah.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri muskuraht🥰,Aapki shararat😘🙈🤗</div>
+          <div class="card-back">
+            <img src="img/imgO.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(8)">
+            <audio controls id="song7" src="song/Hua nahi Pehle Kabhi Ye.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri kahani,Aapka naam❤️🤗</div>
+          <div class="card-back">
+            <img src="img/imgQ.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(9)">
+            <audio controls id="song8" src="song/Dil Tu Jaan Tu.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Aapka dil❤️,Mera aashiyana🤗✨</div>
+          <div class="card-back">
+            <img src="img/imgD.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(10)">
+            <audio controls id="song9" src="song/Yeh Pyaar Nahi Toh Kya Hai.mp3"></audio>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Aapki baahein,Mera ghr🥰🫂</div>
+          <div class="card-back">
+            <img src="img/imgH.jpg" alt="Image 1" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(12)">
+            <audio controls id="song11" src="song/Nede Nede Female   (1).mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri aarzoo hmara mukammal Ishq🤞🥺❤️</div>
+          <div class="card-back">
+            <img src="img/imgS.jpg" alt="Image 2" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(13)">
+            <audio controls id="song12" src="song/Salamat rhe.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Mera khyaal,Aapka zikr😘✨</div>
+          <div class="card-back">
+            <img src="img/imgN.jpg" alt="Image 3" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(14)">
+            <audio controls id="song13" src="song/Soch na sake song Airlift.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri har khusi,Aapki hasrat😘🤗</div>
+          <div class="card-back">
+            <img src="img/imgBb.jpg" alt="Image 4" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(15)">
+            <audio controls id="song14" src="song/Hasi bann gye.mp3"></audio>
+          </div>
+        </div>
+      </div> 
+      </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri har dua me,Aapka zikr🤞✨</div>
+          <div class="card-back">
+            <img src="img/imgJ.jpg" alt="Image 1" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(16)">
+            <audio controls id="song15" src="song/saathiya.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Meri Duniyaa,Aapka saath❤️🤗</div>
+          <div class="card-back">
+            <img src="img/imgT.jpg" alt="Image 2" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(17)">
+            <audio controls id="song16" src="song/Meri Duniya Tu hi re.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Soch mera,Asar aapka❤️💏</div>
+          <div class="card-back">
+            <img src="img/imgU.jpg" alt="Image 3" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(18)">
+            <audio controls id="song17" src="song/Soch  Hardy Sandhu.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Dil mera raaj aapka❤️🤗</div>
+          <div class="card-back">
+            <img src="img/imgP.jpg" alt="Image 1" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(19)">
+            <audio controls id="song18" src="song/Tumhare Hi Rahenge Hum.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Mera aaj bhi aap or aane wala kal bhi❤️🤞</div>
+          <div class="card-back">
+            <img src="img/imgY.jpg" alt="Image 2" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(20)">
+            <audio controls id="song19" src="song/Kaun mera,mera kya tu lage.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">Mera wajood,Khud Aap❤️🤗</div>
+          <div class="card-back">
+            <img src="img/imgW.jpg" alt="Image 1" style="width: 100%; height: 100%; border-radius: 10px;" onclick="playAudio(21)">
+            <audio controls id="song20" src="song/Kisi bhi mod per Muhammad faiz.mp3"></audio>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </main>
+  <!-- Footer Section -->
+   <footer>
+    
+</footer>
+  <footer>
+    <p>Happy Birthday Hubby Jii😘❤️🫂✨</p>
+  </footer>
+  <audio id="birthdaySong" src="song/Tujhme rabb dikhta hai.mp3"></audio>
+
+    <script>
+        const audio = document.getElementById("birthdaySong");
+
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
